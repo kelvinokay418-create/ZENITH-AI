@@ -3,22 +3,23 @@
   padding: 0;
   box-sizing: border-box;
 }
-body{
+body {
   background: linear-gradient(to right, #0f172a, #1e293b);
   color: #cccccc;
-  height: 100vh;
-  width: 100vw;
+  min-height: 100vh; /* Permite que o fundo cresça se o conteúdo for longo */
+  margin: 0;
 }
-.container{
-  height: 100vh;
+
+.container {
+  min-height: 100vh;
   max-width: 360px;
   width: 100%;
-  margin: auto;
+  margin: 0 auto; /* Garante centralização horizontal */
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
   align-items: center;
-  
+  padding: 20px; /* Evita que o texto encoste nas bordas do telemóvel */
 }
 h2{
   margin-bottom: 20px;
