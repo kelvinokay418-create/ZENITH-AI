@@ -71,4 +71,5 @@ button:hover{
   padding: 0 15px;
   max-width: 360px;
   width: 90%;
+  text-wrap: wrap;
 }
