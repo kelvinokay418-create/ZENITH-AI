@@ -12,7 +12,5 @@ const input = promptAula(tema, nivel, curso);
 const saida = await perguntarIa(input);
 document.getElementById("resultado").innerHTML = marked.parse(saida);
 MathJax.typeset()
-console.log('resposta: ',saida);
-alert('aula gerada verifique no console')
   document.querySelector('.processar').classList.remove('processando')
 }
