@@ -14,17 +14,27 @@ body{
   align-items: center;
   gap: 20px;
 }
-i{
-  font-size: 30px;
-  background: #4F46E5;
-  width: 40px;
-  height: 40px;
-  border-radius: 50%;
-  font-style: normal;
-  position: relative;
-  text-align: center;
-  font-weight: 100;
+i {
+  display: flex; /* ESSENCIAL */
+  align-items: center; /* centraliza vertical */
+  justify-content: center; /* centraliza horizontal */
+
+  font-size: 18px; /* 30px estava exagerado */
   
+  background: #4F46E5;
+  color: white;
+
+  width: 45px;
+  height: 45px;
+  border-radius: 50%;
+
+  cursor: pointer; /* agora parece clicável */
+
+  transition: 0.2s; /* suavidade */
+}
+i:hover {
+  transform: scale(1.1);
+  background: #6366f1;
 }
 input{
   background: none;
