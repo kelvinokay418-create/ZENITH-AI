@@ -12,6 +12,7 @@ body{
 .container{
   height: 100vh;
   max-width: 360px;
+  width: 100%;
   margin: auto;
   display: flex;
   flex-direction: column;
