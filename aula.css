@@ -69,9 +69,6 @@ button:hover{
 }
 #resultado{
   padding: 0 15px;
-  width: 100%;           /* Garante que respeite a largura do pai */
-  word-wrap: break-word; /* Força a quebra de palavras longas */
-  overflow-wrap: break-word;
-  word-break: break-all;   /* Força a quebra em qualquer caractere se necessário */
-  white-space: normal;
+  max-width: 360px;
+  width: 90%;
 }
