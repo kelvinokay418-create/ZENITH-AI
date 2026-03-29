@@ -27,6 +27,8 @@ h2{
 }
 input{
   background: none;
+  width: 100%;
+  font-size: 16px;
   border: 2px solid #ccc;
   padding: 10px 15px;
   border-radius: 18px;
@@ -34,7 +36,7 @@ input{
   color: #ccc;
 }
 input:focus{
-  transform: scale(1.1);
+  transform: scale(1.05);
 }
 button{
   padding: 8px 12px;
@@ -67,4 +69,7 @@ button:hover{
 }
 #resultado{
   padding: 0 15px;
+  width: 100%;           /* Garante que respeite a largura do pai */
+  word-wrap: break-word; /* Força a quebra de palavras longas */
+  overflow-wrap: break-word;
 }
