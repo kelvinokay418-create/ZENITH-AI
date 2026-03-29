@@ -74,5 +74,4 @@ button:hover{
   overflow-wrap: break-word;
   word-break: break-all;   /* Força a quebra em qualquer caractere se necessário */
   white-space: normal;
-  text-wrap: wrap;
 }
