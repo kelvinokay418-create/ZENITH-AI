@@ -11,26 +11,23 @@ body{
   margin: auto;
   display: flex;
   justify-content: center;
-  align-items: center;
+  align-items: flex-end;
   gap: 20px;
+  
 }
 i {
-  display: flex; /* ESSENCIAL */
-  align-items: center; /* centraliza vertical */
-  justify-content: center; /* centraliza horizontal */
-
-  font-size: 18px; /* 30px estava exagerado */
-  
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 25px;
   background: #4F46E5;
   color: white;
-
   width: 45px;
   height: 45px;
   border-radius: 50%;
-
-  cursor: pointer; /* agora parece clicável */
-
-  transition: 0.2s; /* suavidade */
+  cursor: pointer;
+  transition: 0.2s;
+  transform: rotate(90deg);
 }
 i:hover {
   transform: scale(1.1);
