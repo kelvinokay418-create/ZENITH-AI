@@ -12,6 +12,7 @@ body{
   justify-content: center;
   align-items: flex-end;
   gap: 20px;
+  top: 100%;
 }
 i {
   display: flex;
@@ -29,7 +30,7 @@ i {
   transform: rotate(90deg);
 }
 i:hover {
-  transform: scale(1.1);
+  transform: rotate(90deg) scale(1.1);
   background: #6366f1;
 }
 input{
@@ -45,6 +46,5 @@ input:focus{
 }
 #chat{
   max-width: 340px;
-  margin-bottom: 100%;
 }
 
