@@ -45,5 +45,7 @@ input:focus{
 }
 #chat{
   max-width: 340px;
+  height: 80%;
+  overflow: hidden;
 }
 
