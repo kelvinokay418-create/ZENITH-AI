@@ -1,7 +1,7 @@
 body{
   background: linear-gradient(to right, #0f172a, #1e293b);
   color: #CCCCCC;
-  height: 100vh;
+  max-height: 100vh;
   width: 100vw;
 }
 .container{
@@ -27,6 +27,7 @@ button{
   cursor: pointer;
   transition: 0.2s;
   transform: rotate(90deg);
+  text-align: center;
 }
 button:hover {
   transform: scale(1.1);
@@ -44,10 +45,10 @@ input:focus{
   transform: scale(1.1);
 }
 #chat{
+  top: 0;
   margin: 0 auto;
   position: absolute;
   max-width: 340px;
-  height: 80%;
   overflow: hidden;
 }
 
