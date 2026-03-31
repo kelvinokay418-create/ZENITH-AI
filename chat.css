@@ -6,7 +6,6 @@ body{
 }
 .container{
   position: sticky;
-  height: 70px;
   max-width: 340px;
   margin: auto;
   margin-bottom: 0;
