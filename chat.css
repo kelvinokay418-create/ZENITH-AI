@@ -3,17 +3,19 @@
   margin: 0;
   padding: 0;
 }
-
+html, body{
+height: 100%;
+}
 body {
   background: linear-gradient(to right, #0f172a, #1e293b);
   color: #CCCCCC;
-  height: 100vh; 
+  height: 100dvh; 
   width: 100vw;
   display: flex;
   flex-direction: column;
   align-items: center;
   overflow: hidden; 
-  padding: 45px 20px;
+  padding: 20px 10px;
 }
 
 #chat {
@@ -24,7 +26,9 @@ body {
   display: flex;
   flex-direction: column;
   gap: 15px;
-  overflow-y: auto; 
+  overflow-y: auto;
+  min-height: 0;
+  scroll-behavior: smooth;
 }
 
 #chat::-webkit-scrollbar {
