@@ -8,18 +8,19 @@ if (typeof input === 'string') {
 else {
   messages = input
 }
-  const resposta = await fetch("https://api.deepseek.com/chat/completions", {
+  const resposta = await fetch("https://api.groq.com/openai/v1/chat/completions", {
 
     method: "POST",
 
     headers:{
       "Content-Type": "application/json",
-      "Authorization": "Bearer sk-8b02f7fdce754dca951af88700c28374"
+      "Authorization": "Bearer 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"
     },
 
     body: JSON.stringify({
-      model: "deepseek-chat",
-      messages: messages
+      model: "llama-3.1-8b-instant",
+      messages: messages,
+      temperature: 0.7
       
     })
 
