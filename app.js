@@ -10,7 +10,16 @@ const nivel = document.getElementById("nivel").value
 const curso = document.getElementById("curso").value
 const input = promptAula(tema, nivel, curso);
 const saida = await perguntarIa(input);
-document.getElementById("resultado").innerHTML = marked.parse(saida);
 MathJax.typeset()
   document.querySelector('.processar').classList.remove('processando')
+document.getElementById("resultado").innerHTML = `
+  <div class="conteudo">${marked.parse(saida)}</div>
+  <i class="fa-regular fa-copy btn-copy"></i>
+`;
+
+document.querySelector(".btn-copy").addEventListener("click", function () {
+  const texto = this.previousElementSibling.innerText;
+  navigator.clipboard.writeText(texto)
+});
+
 }
