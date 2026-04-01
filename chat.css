@@ -1,5 +1,5 @@
 * {
-  box-sizing: border-box; /* Garante que padding não quebre a largura */
+  box-sizing: border-box;
   margin: 0;
   padding: 0;
 }
@@ -7,33 +7,120 @@
 body {
   background: linear-gradient(to right, #0f172a, #1e293b);
   color: #CCCCCC;
-  height: 100vh; /* Altura total da tela */
+  height: 100vh; 
   width: 100vw;
   display: flex;
-  flex-direction: column; /* Organiza os elementos em coluna */
-  align-items: center;    /* Centraliza horizontalmente */
-  overflow: hidden;       /* Impede que o body crie barra de rolagem */
+  flex-direction: column;
+  align-items: center;
+  overflow: hidden; 
 }
 
 #chat {
-  flex: 1;                /* Faz o chat ocupar TODO o espaço disponível */
+  flex: 1; 
   width: 100%;
-  max-width: 500px;       /* Aumentei um pouco para melhor leitura */
+  max-width: 500px;
   padding: 20px;
-  overflow-y: auto;       /* Cria a barra de rolagem vertical quando necessário */
   display: flex;
   flex-direction: column;
-  gap: 10px;
+  gap: 15px;
+  overflow-y: auto; 
 }
 
-/* Estilo para a barra de rolagem (opcional, para ficar mais bonito) */
 #chat::-webkit-scrollbar {
-  width: 6px;
+  width: 5px;
 }
 #chat::-webkit-scrollbar-thumb {
   background-color: #4F46E5;
   border-radius: 10px;
 }
+
+.chatUser{
+  max-width: 80%;
+  background: #4F46E5;
+  padding: 12px 16px;
+  border-radius: 20px;
+  border-bottom-right-radius: 0;
+  align-self: flex-end;
+}
+.container {
+  width: 100%;
+  max-width: 500px;
+  padding: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  background: rgba(15, 23, 42, 0.9);
+  flex-shrink: 0; 
+}
+
+.chatSystem {
+  display: block;
+  width: fit-content; 
+  max-width: 85%;
+  background: #1e293b;
+  padding: 12px 16px;
+  border-radius: 20px;
+  border-bottom-left-radius: 0;
+  align-self: flex-start;
+  line-height: 1.5;
+  word-wrap: break-word;
+}
+
+
+input {
+  flex: 1;
+  background: #1e293b;
+  border: 1px solid #334155;
+  padding: 14px 20px;
+  border-radius: 25px; 
+  outline: none;
+  color: #f8fafc;
+  font-size: 16px;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+}
+
+input:focus {
+  border-color: #6366f1;
+  background: #273549;
+  box-shadow: 0 0 0 2px rgba(99, 102, 241, 0.2);
+}
+
+button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #4F46E5;
+  color: white;
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  border: none;
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: 0 4px 10px rgba(79, 70, 229, 0.3);
+  
+  font-size: 40px;
+  font-weight: bold;
+  transform: rotate(0deg);
+}
+
+button:hover {
+  background: #6366f1;
+  transform: scale(1.05) translateX(2px);
+  box-shadow: 0 6px 15px rgba(79, 70, 229, 0.4);
+}
+
+button:active {
+  transform: scale(0.95);
+}
+
+
+
+
+
+
 
 .container {
   width: 100%;
