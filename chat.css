@@ -9,7 +9,7 @@ height: 100%;
 body {
   background: linear-gradient(to right, #0f172a, #1e293b);
   color: #CCCCCC;
-  height: 100dvh; 
+  min-height: 100dvh; 
   width: 100vw;
   display: flex;
   flex-direction: column;
@@ -28,6 +28,7 @@ body {
   gap: 15px;
   overflow-y: auto;
   min-height: 0;
+  padding-top:10px;
   scroll-behavior: smooth;
 }
 
@@ -107,7 +108,7 @@ button {
   transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   box-shadow: 0 4px 10px rgba(79, 70, 229, 0.3);
   
-  font-size: 40px;
+  font-size: 24px;
   font-weight: bold;
   transform: rotate(0deg);
 }
