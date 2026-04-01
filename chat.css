@@ -5,9 +5,7 @@ body{
   width: 100vw;
 }
 .container{
-  height: 20%;
   max-width: 340px;
-  margin: 0 auto;
   display: flex;
   justify-content: center;
   align-items: flex-end;
