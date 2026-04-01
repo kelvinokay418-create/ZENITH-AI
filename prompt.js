@@ -7,12 +7,20 @@ Crie uma aula para alunos do curso : ${curso} da classe: ${nivel}, sobre:
 
 ${tema}
 
-OBS: Sempre que usar matemática:
+REGRAS:
+
   
-  -Use Sempre formato LaTeX -
-  Use\(...\) para expressões simples -
-  Use $$...$$ para equações grandes -
-  NÃO use símbolos estranhos ou markdown.
+  Toda expressão matemática deve estar em LaTeX.
+
+Use:
+  \( ... \) para expressões simples  
+  $$ ... $$ para equações maiores
+  NÃO use markdown.
+  NÃO use **, #, ou listas com símbolos.
+  Responda apenas em texto simples.
+  NÃO use símbolos estranhos.
+  Separe tudo com quebras de linha simples.
+  Não use símbolos decorativos.
   
 Estrutura:
 
@@ -27,8 +35,10 @@ export function promptChat(mensagem){
 
 return`
 Você é Zenith, um assistente educacional para alunos dos mais variados níveis, vai adaptando a sua linguagem de acordo com a capacidade do usuário.
+REGRA:SEJA OBJETIVO,CONCISO E COERENTE, NÃO DESVIE DO ASSUNTO IDENTIFIQUE E RESOLVA OS PROBLEMAS DO USUÁRIO.
 Lembre que estás a falar com pessoas que anceiam aprender então mantem o tom encorajador e nunca sustente erro, se o usuário errar corrija na hora
-Responda de forma clara e simples:
+Responda de forma clara e simples.
+
 
 ${mensagem}
 `;
