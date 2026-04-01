@@ -8,7 +8,8 @@ document.getElementById('enviar').addEventListener('click', chat)
   const mensagem = document.getElementById('mensagem').value
   document.getElementById('mensagem').value = ''
   const chat = document.getElementById("chat");
-  chat.innerHTML += `<p><b>Você:</b> ${mensagem || "vazio"}</p>`;
+  chat.innerHTML += `<p class="chatUser"> ${mensagem || "vazio"}</p>`;
+  chat.scrollTop = chat.scrollHeight
   historico.push({
     role: 'user',
     content: mensagem
@@ -20,8 +21,17 @@ document.getElementById('enviar').addEventListener('click', chat)
   )
 
   const resposta = await perguntarIa(historico)
-  chat.innerHTML += marked.parse(`<p><b>Zenith:</b> ${resposta || "sem resposta"}</p><br>`);
-chat.classList.add('chat')
-
-
+  if (resposta.status === 429) {
+  chat.innerHTML = "IA", "Muita gente estudando agora! Aguarde alguns segundos e tente enviar novamente.";
+  return;
 }
+
+if (!resposta.ok) {
+  const divIA = document.createElement('div')
+  divIA.className = 'chatSystem'
+  divIA.innerHTML += `${resposta} <br><br>`
+  chat.appendChild(divIA)
+}
+chat.scrollTop = chat.scrollHeight
+
+ }
