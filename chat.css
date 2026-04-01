@@ -5,7 +5,7 @@
 }
 
 body {
-  background: red;
+  background: linear-gradient(to right, #0f172a, #1e293b);
   color: #CCCCCC;
   height: 100vh; /* Altura total da tela */
   width: 100vw;
