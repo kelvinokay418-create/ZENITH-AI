@@ -9,7 +9,7 @@ const tema = document.getElementById("tema").value;
 const nivel = document.getElementById("nivel").value
 const curso = document.getElementById("curso").value
 const input = promptAula(tema, nivel, curso);
-const saida = await perguntarIa(input);
+const saida = await perguntarIa(input, "deepseek-chat");
 MathJax.typeset()
   document.querySelector('.processar').classList.remove('processando')
 document.getElementById("resultado").innerHTML = `
