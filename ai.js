@@ -1,4 +1,4 @@
-export async function perguntarIa(input){
+export async function perguntarIa(input, modelo = "deepseek-chat"){
 let messages;
 if (typeof input === 'string') {
   messages = [
@@ -8,19 +8,19 @@ if (typeof input === 'string') {
 else {
   messages = input
 }
-  const resposta = await fetch("https://api.groq.com/openai/v1/chat/completions", {
+  const resposta = await fetch("https://api.deepseek.com/chat/completions", {
 
     method: "POST",
 
     headers:{
       "Content-Type": "application/json",
-      "Authorization": "Bearer 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"
+      "Authorization": "Bearer sk-8b02f7fdce754dca951af88700c28374"
     },
 
     body: JSON.stringify({
-      model: "llama-3.1-8b-instant",
+      model: "deepseek-reasoner",
       messages: messages,
-      temperature: 0.7
+      temperature: 0.5
       
     })
 
