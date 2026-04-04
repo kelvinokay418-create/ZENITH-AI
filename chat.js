@@ -2,25 +2,67 @@ import {promptChat} from "./prompt.js"
 import {perguntarIa} from "./ai.js"
 
 let historico = []
+function usarHistorico(mensagem) {
+  const gatilhos = ["continua", "explique melhor", "detalha", "não entendi"];
+
+  return gatilhos.some(p => mensagem.toLowerCase().includes(p));
+}
+let dotsInterval;
+
+function startLoading() {
+  const loading = document.getElementById("loading");
+  const dots = document.getElementById("dots");
+
+  loading.classList.remove("hidden");
+
+  let count = 0;
+
+  dotsInterval = setInterval(() => {
+    count = (count + 1) % 4;
+    dots.textContent = ".".repeat(count);
+  }, 400);
+}
+
+function stopLoading() {
+  const loading = document.getElementById("loading");
+
+  clearInterval(dotsInterval);
+  loading.classList.add("hidden");
+}
 document.getElementById('enviar').addEventListener('click', chat)
 
  async function chat(){
   const mensagem = document.getElementById('mensagem').value
+  usarHistorico(mensagem)
+
   document.getElementById('mensagem').value = ''
   const chat = document.getElementById("chat");
   chat.innerHTML += `<p class="chatUser"> ${mensagem || "vazio"}</p>`;
+  startLoading()
   chat.scrollTop = chat.scrollHeight
-  historico.push({
-    role: 'user',
-    content: mensagem
-  },
-    {
-      role: 'system',
-      content: 'Você é Zenith, um professor que ensina alunos dos mais diferentes níveis (se adaptando a cada) nos assuntos que eles quiserem (os compreendendo e criando conexão subtil) de forma didática, atrativa, educativa e de uma forma que se um adulto bir vai adorar. REGRAS IMPORTANTES:  - Responda APENAS à última pergunta do usuário. - NÃO repita explicações anteriores. - NÃO reexplique assuntos já respondidos, a menos que o usuário peça. - Use o histórico apenas para contexto, não para repetir conteúdo. - Seja direto, claro e objetivo'
-    }
-  )
+  
+let messages;
 
-  const resposta = await perguntarIa(historico)
+if (usarHistorico(mensagem)) {
+  historico.push({
+  role: 'user',
+  content: mensagem
+});
+  messages = [
+    { role: "system", content: "Você é ZENITH um assistente virtual para alunos, responda didaticamente e de forma jovial mas sempre como se fosse de um educador para um aluno. foste criada por um grupo de estudantes do IPIZ(não sai por aí mencionando isso)" },
+    ...historico
+  ];
+} else {
+  messages = [
+    { role: "system", content: "Você é ZENITH um assistente virtual para alunos, responda didaticamente e de forma jovial mas sempre como se fosse de um educador para um aluno. foste criada por um grupo de estudantes do IPIZ(não sai por aí mencionando isso)" },
+    { role: "user", content: mensagem }
+  ];
+}
+  const resposta = await perguntarIa(messages, "deepseek-chat")
+  historico.push({
+    role: 'assistant',
+    content: resposta
+  })
   if (resposta.status === 429) {
   chat.innerHTML = "IA", "Muita gente estudando agora! Aguarde alguns segundos e tente enviar novamente.";
   return;
@@ -32,6 +74,7 @@ if (!resposta.ok) {
   divIA.innerHTML += `${resposta} <br><br>`
   chat.appendChild(divIA)
 }
+stopLoading()
 chat.scrollTop = chat.scrollHeight
 
- }
+     } }
