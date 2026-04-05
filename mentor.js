@@ -1,6 +1,5 @@
-import {perguntarIa} from './ai.js';
 import {mentorIa} from './prompt.js';
-
+import {perguntarIa} from './ai.js';
 const add = document.getElementById('addSubjects')
 
 add.addEventListener('click', function (){
