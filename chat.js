@@ -117,3 +117,4 @@ async function chat() {
   startLoading()
   chat.scrollTop = chat.scrollHeight
   
+    }
