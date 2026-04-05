@@ -73,7 +73,8 @@ body::after {
   display: flex;
   flex-direction: column;
   gap: 15px;
-  overflow-y: auto; 
+  padding-bottom: 90px;
+  overflow-y: auto;
 }
 
 #chat::-webkit-scrollbar {
