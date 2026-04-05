@@ -1,5 +1,5 @@
-import {perguntarIa} from '../ai.js';
-import {mentorIa} from '../prompt.js';
+import {perguntarIa} from './ai.js';
+import {mentorIa} from './prompt.js';
 
 const add = document.getElementById('addSubjects')
 
