@@ -101,7 +101,13 @@ async function chat() {
     divIA.className = "chatIA";
     divIA.innerHTML = resposta;
     chatBox.appendChild(divIA);
-
+    stopLoading();
+  chatBox.scrollTop = chatBox.scrollHeight;
+  document.getElementById('mensagem').value = ''
+  chatBox.innerHTML += `<p class="chatUser"> ${mensagem || "vazio"}</p>`;
+  startLoading()
+  chatBox.scrollTop = chatBox.scrollHeight
+  
   } catch (erro) {
     const divErro = document.createElement("div");
     divErro.className = "chatSystem";
@@ -109,12 +115,4 @@ async function chat() {
     chatBox.appendChild(divErro);
   }
 
-  stopLoading();
-  chatBox.scrollTop = chatBox.scrollHeight;
-  document.getElementById('mensagem').value = ''
-  const chat = document.getElementById("chat");
-  chat.innerHTML += `<p class="chatUser"> ${mensagem || "vazio"}</p>`;
-  startLoading()
-  chat.scrollTop = chat.scrollHeight
-  
     }
