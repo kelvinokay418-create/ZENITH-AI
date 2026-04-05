@@ -111,47 +111,9 @@ async function chat() {
 
   stopLoading();
   chatBox.scrollTop = chatBox.scrollHeight;
-}
   document.getElementById('mensagem').value = ''
   const chat = document.getElementById("chat");
   chat.innerHTML += `<p class="chatUser"> ${mensagem || "vazio"}</p>`;
   startLoading()
   chat.scrollTop = chat.scrollHeight
   
-let messages;
-
-if (usarHistorico(mensagem)) {
-  historico.push({
-  role: 'user',
-  content: mensagem
-});
-  messages = [
-    { role: "system", content: "Você é ZENITH um assistente virtual para alunos, responda didaticamente e de forma jovial mas sempre como se fosse de um educador para um aluno. foste criada por um grupo de estudantes do IPIZ(não sai por aí mencionando isso)" },
-    ...historico
-  ];
-} else {
-  messages = [
-    { role: "system", content: "Você é ZENITH um assistente virtual para alunos, responda didaticamente e de forma jovial mas sempre como se fosse de um educador para um aluno. foste criada por um grupo de estudantes do IPIZ(não sai por aí mencionando isso)" },
-    { role: "user", content: mensagem }
-  ];
-}
-  const resposta = await perguntarIa(messages, "deepseek-chat")
-  historico.push({
-    role: 'assistant',
-    content: resposta
-  })
-  if (resposta.status === 429) {
-  chat.innerHTML = "IA", "Muita gente estudando agora! Aguarde alguns segundos e tente enviar novamente.";
-  return;
-}
-
-if (!resposta.ok) {
-  const divIA = document.createElement('div')
-  divIA.className = 'chatSystem'
-  divIA.innerHTML += `${resposta} <br><br>`
-  chat.appendChild(divIA)
-}
-stopLoading()
-chat.scrollTop = chat.scrollHeight
-
-     } }
