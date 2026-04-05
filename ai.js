@@ -1,33 +1,30 @@
-export async function perguntarIa(input, modelo = "deepseek-chat"){
-let messages;
-if (typeof input === 'string') {
-  messages = [
-    {role: 'user', content: input}
-  ];
-}
-else {
-  messages = input
-}
-  const resposta = await fetch("https://api.deepseek.com/chat/completions", {
+export async function perguntarIa(input, modelo = "deepseek-chat") {
+  let messages;
 
+  if (typeof input === 'string') {
+    messages = [
+      { role: 'user', content: input }
+    ];
+  } else {
+    messages = input;
+  }
+
+  const resposta = await fetch("https://api.deepseek.com/v1/chat/completions", {
     method: "POST",
-
-    headers:{
+    headers: {
       "Content-Type": "application/json",
-      "Authorization": "Bearer sk-8b02f7fdce754dca951af88700c28374"
+      "Authorization": "Bearer SUA_API_KEY"
     },
-
     body: JSON.stringify({
-      model: "deepseek-reasoner",
+      model: modelo,
       messages: messages,
       temperature: 0.5
-      
     })
+  });
 
-  })
+  const dados = await resposta.json();
 
-  const dados = await resposta.json()
-  console.log('Prompt: ',prompt);
+  console.log('Messages:', messages);
+
   return dados.choices[0].message.content;
 }
-
