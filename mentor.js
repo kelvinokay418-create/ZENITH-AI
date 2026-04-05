@@ -86,3 +86,55 @@ async function mentor() {
    show.scrollTop= show.scrollHeight
    pararLoading()
   }
+const estados = [
+  "A analisar dados...",
+  "A identificar padrões...",
+  "A estruturar plano...",
+  "A otimizar estratégia...",
+  "A personalizar recomendações..."
+];
+let intervalo;
+
+function iniciarLoading() {
+  const status = document.getElementById("status");
+  let i = 0;
+  status.classList.add('status')
+  intervalo = setInterval(() => {
+    status.textContent = estados[i];
+    i = (i + 1) % estados.length;
+  }, 2000);
+}
+
+function pararLoading() {
+  clearInterval(intervalo);
+  const status = document.getElementById("status");
+  status.textContent = '';
+
+  status.classList.remove('status')
+}
+
+document.querySelector('.enviar').addEventListener('click', mentor)
+
+async function mentor() {
+    
+    const name = document.getElementById('nome').value;
+    const classe = document.getElementById('classe').value
+    const curso = document.getElementById('curso').value
+    const meta = document.getElementById('objetivo').value
+    const notas = formatarNotas()
+     const show = document.querySelector('.answer')
+     const aluno ={
+      name,
+      classe,
+      curso,
+      meta,
+      notas
+    }
+    iniciarLoading()
+    const input = mentorIa(aluno)
+   const resposta = await perguntarIa(input, "deepseek-reasoner")
+   show.classList.add('show')
+   show.innerHTML = marked.parse(resposta)
+   show.scrollTop= show.scrollHeight
+   pararLoading()
+  }
