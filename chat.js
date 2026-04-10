@@ -63,11 +63,7 @@ if (usarHistorico(mensagem)) {
     role: 'assistant',
     content: resposta
   })
-  if (resposta.status === 429) {
-  chat.innerHTML = "IA", "Muita gente estudando agora! Aguarde alguns segundos e tente enviar novamente.";
-  return;
-}
-
+  
 if (!resposta.ok) {
   const divIA = document.createElement('div')
   divIA.className = 'chatSystem'
