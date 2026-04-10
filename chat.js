@@ -7,6 +7,16 @@ function usarHistorico(mensagem) {
 
   return gatilhos.some(p => mensagem.toLowerCase().includes(p));
 }
+
+const input = document.getElementById('mensagem');
+const botao = document.getElementById('enviar');
+
+botao.disabled = true;
+
+input.addEventListener('input', () => {
+  botao.disabled = input.value.trim() === '';
+});
+
 let dotsInterval;
 
 function startLoading() {
@@ -32,45 +42,41 @@ function stopLoading() {
 document.getElementById('enviar').addEventListener('click', chat)
 
  async function chat(){
-  const mensagem = document.getElementById('mensagem').value
-  usarHistorico(mensagem)
-  document.querySelector('.show').classList.add('apresentacao')
-  document.getElementById('mensagem').value = ''
-  const chat = document.getElementById("chat");
-  chat.innerHTML += `<p class="chatUser"> ${mensagem}</p>`;
-  startLoading()
-  chat.scrollTop = chat.scrollHeight
-  
-let messages;
+  const input = document.getElementById('mensagem')
+  const mensagem = input.value.trim()
 
-if (usarHistorico(mensagem)) {
-  historico.push({
-  role: 'user',
-  content: mensagem
-});
-  messages = [
-    { role: "system", content: "Você é ZENITH um assistente virtual para alunos, responda didaticamente e de forma jovial mas sempre como se fosse de um educador para um aluno. foste criada por um grupo de estudantes do IPIZ(não sai por aí mencionando isso)" },
-    ...historico
-  ];
-} else {
-  messages = [
-    { role: "system", content: "Você é ZENITH um assistente virtual para alunos, responda didaticamente e de forma jovial mas sempre como se fosse de um educador para um aluno. foste criada por um grupo de estudantes do IPIZ(não sai por aí mencionando isso)" },
-    { role: "user", content: mensagem }
-  ];
-}
+  if (!mensagem) return;
+
+  input.value = ''
+
+  document.querySelector('.show').classList.add('apresentacao')
+
+  const chat = document.getElementById("chat");
+
+  const userMsg = document.createElement('p')
+  userMsg.className = 'chatUser'
+  userMsg.textContent = mensagem
+  chat.appendChild(userMsg)
+
+  startLoading()
+
+  const usarHist = usarHistorico(mensagem)
+
+  let messages = usarHist
+    ? [{ role: "system", content: "..." }, ...historico, { role: "user", content: mensagem }]
+    : [{ role: "system", content: "..." }, { role: "user", content: mensagem }]
+
   const resposta = await perguntarIa(messages, "deepseek-chat")
-  historico.push({
-    role: 'assistant',
-    content: resposta
-  })
-  
-if (!resposta.ok) {
+
+  historico.push({ role: 'user', content: mensagem })
+  historico.push({ role: 'assistant', content: resposta })
+
   const divIA = document.createElement('div')
   divIA.className = 'chatSystem'
-  divIA.innerHTML += `${resposta} <br><br>`
-  chat.appendChild(divIA)
-}
-stopLoading()
-chat.scrollTop = chat.scrollHeight
+  divIA.innerHTML = marked.parse(resposta)
 
+  chat.appendChild(divIA)
+
+  stopLoading()
+  chat.scrollTop = chat.scrollHeight
 }
