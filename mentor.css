@@ -253,13 +253,10 @@ button:hover{
     transparent 60%
   );
 
-  pointer-events: none;
-}
 .status{
   animation: loading 2s linear infinite;
   animation-delay: 2s;
-  padding: 10px 12px;
-  margin-bottom: 30px;
+  padding: 10px 12px
   border-radius: 18px;
   color: rgba(64, 64, 64, 0.75);
 }
