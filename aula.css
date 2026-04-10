@@ -93,8 +93,8 @@ button:hover{
 #resultado{
   position: relative;
   padding: 0 5px;
-  max-width: 90dvw;
-  width: 70%;
+  max-width: 700px;
+  width: 90%;
   text-wrap: wrap;
 }
 .conteudo {
