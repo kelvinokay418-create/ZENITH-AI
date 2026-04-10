@@ -8,7 +8,8 @@ function usarHistorico(mensagem) {
   return gatilhos.some(p => mensagem.toLowerCase().includes(p));
 }
 
-const input = document.getElementById('mensagem');
+function noBtn(){
+  const input = document.getElementById('mensagem');
 const botao = document.getElementById('enviar');
 
 botao.disabled = true;
@@ -16,7 +17,8 @@ botao.disabled = true;
 input.addEventListener('input', () => {
   botao.disabled = input.value.trim() === '';
 });
-
+}
+noBtn()
 let dotsInterval;
 
 function startLoading() {
@@ -35,9 +37,9 @@ function startLoading() {
 
 function stopLoading() {
   const loading = document.getElementById("loading");
-
+  loading.classList.add("hidden")
   clearInterval(dotsInterval);
-  loading.classList.add("hidden");
+  ;
 }
 document.getElementById('enviar').addEventListener('click', chat)
 
@@ -57,7 +59,7 @@ document.getElementById('enviar').addEventListener('click', chat)
   userMsg.className = 'chatUser'
   userMsg.textContent = mensagem
   chat.appendChild(userMsg)
-
+  noBtn()
   startLoading()
 
   const usarHist = usarHistorico(mensagem)
