@@ -177,7 +177,12 @@ button:active {
   transform: scale(0.95);
 }
 
-
+button:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+  transform: none;
+  box-shadow: none;
+  }
 
 .loading {
   font-size: 14px;
